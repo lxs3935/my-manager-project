@@ -1,1 +1,253 @@
-/* You can add global styles to this file, and also import other style files */
+@import "app/core/theme/base";
+@import "~bootstrap/scss/print";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/code";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+
+@include form-control-size('xs', 0.65);
+.input-group-xs > .form-control,
+.input-group-xs > .input-group-addon,
+.input-group-xs > .input-group-btn > .btn {
+  @extend .form-control-xs;
+}
+
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/input-group";
+@import "~bootstrap/scss/custom-forms";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/breadcrumb";
+@import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/jumbotron";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/media";
+@import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/modal";
+@import "~bootstrap/scss/tooltip";
+@import "~bootstrap/scss/popover";
+@import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/utilities";
+@import '~ngx-bootstrap/datepicker/bs-datepicker';
+@import '~ngx-toastr/toastr';
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
+
+  // Prevent double border on horizontal scroll due to use of `display: block;`
+  &.table-bordered {
+    border: 0;
+  }
+
+  th {
+    border-right: $table-border-width solid $table-border-color;
+    background-color: #F7F7F7;
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  td, th {
+    white-space: nowrap;
+  }
+
+}
+
+// 输入框验证结果提示样式，默认继承bootstrap样式
+.ng-touched, .ng-dirty {
+  &.form-control {
+    &.ng-invalid {
+      @extend .is-invalid;
+      & ~ .invalid-feedback,
+      & ~ .invalid-tooltip {
+        display: block;
+      }
+    }
+
+    &.ng-valid {
+      @extend .is-valid;
+    }
+  }
+}
+
+.invalid-feedback {
+  display: block;
+}
+
+.icon {
+  font-size: $font-size-base;
+}
+
+//
+// Nav Title
+//
+
+.nav-title {
+  border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
+  padding: 0 ($grid-gutter-width/2);
+  margin: 1.25rem 0;
+
+  .nav-item {
+    margin-bottom: -$nav-tabs-border-width;
+  }
+
+  .nav-link {
+    border: $nav-tabs-border-width solid transparent;
+    padding: 1.25rem 0.25rem;
+
+    @include border-top-radius(0);
+
+    @include hover-focus {
+      border-color: #d0d0d0;
+    }
+
+    &.disabled {
+      color: $nav-link-disabled-color;
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
+
+  .nav-link.active,
+  .nav-item.show .nav-link {
+    color: $rose;
+    background-color: $white;
+    border-width: 0 0 0.25rem 0;
+    border-color: $rose;
+  }
+
+  .dropdown-menu {
+    // Make dropdown border overlap tab border
+    margin-top: -$nav-tabs-border-width;
+    // Remove the top rounded corners here since there is a hard edge above the menu
+    @include border-top-radius(0);
+  }
+}
+
+//
+// input group icon
+//
+.input-group.icon {
+
+  &:before {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    z-index: 10;
+    padding: $input-btn-padding-y $input-btn-padding-x;
+    line-height: $input-btn-line-height;
+    vertical-align: middle;
+  }
+
+  .form-control {
+    font-family: $font-family-base;
+    padding: {
+      top: $input-btn-padding-y;
+      bottom: $input-btn-padding-y;
+      left: ($input-btn-padding-x * 2) + $font-size-base;
+      right: $input-btn-padding-x;
+    }
+  }
+}
+
+.modal-content {
+
+  .modal-header {
+    background-color: #f0f0f0;
+    border-bottom: none;
+    padding: 14px 16px;
+    .modal-title {
+      font-size: 14px;
+      color: #333;
+    }
+  }
+
+  .modal-body {
+    padding: 24px 16px;
+    font-size: 12px;
+    .form-control {
+      font-size: 12px;
+      color: #333;
+    }
+  }
+
+  .modal-footer {
+    padding-top: 0;
+    .btn {
+      min-width: 38px;
+      height: 30px;
+      font-size: 12px;
+      padding: 0 15px;
+    }
+  }
+}
+
+.dropdown-menu {
+  margin-top: -4px;
+  border-radius: 0;
+  width: 100%;
+  padding: 0;
+  max-height: 205px;
+  overflow: auto;
+  // Links within the dropdown menu
+  li {
+    padding: 0 10px;
+    border-bottom: 1px solid #f7f1f1;
+    color: #666666;
+    cursor: pointer;
+    line-height: 29px;
+    height: 29px;
+
+    &:hover {
+      background-color: #e3325c;
+      color: #ffffff;
+    }
+
+    > a {
+      display: block;
+      padding: 0;
+      clear: both;
+      font-weight: normal;
+      line-height: 29px;
+      height: 29px;
+      color: #e3325c;
+      white-space: nowrap; // prevent links from randomly breaking onto new lines
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .well {
+    margin: 0;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+body {
+  overflow-y: scroll;
+}
+
+.product-verify-details {
+  td, th {
+    border: 1px solid #ddd;
+  }
+}
+
